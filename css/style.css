@@ -1,0 +1,46 @@
+nav{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+nav select, button{
+  border: 0;
+  outline: none;
+  background-color: #2bbfece7;
+  border-radius: 5px;
+  padding: 5px 20px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+table{
+  margin-top: 50px;
+  border-radius: 10px;
+  text-align: center;
+  margin: auto;
+}
+
+table *{
+  border-bottom: 1px solid #00000071;;
+  width: 150px;
+  border-radius: 5px;
+  
+}
+
+table th{
+  background-color: #2bbfece7;;
+  color: #000000;
+  text-align: center;
+}
+
+table img{
+  width: 40px;
+  border: none;
+}
+
+div{
+  border: none;
+  border-radius: none;
+}
