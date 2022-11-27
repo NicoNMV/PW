@@ -12,7 +12,7 @@
 <body>
   <nav>
     <form method="GET" action="index.php">
-      <select name="cargo">
+      <select name="sltcargo">
       <option selected disabled value= "" >Selecione</option>
         <?php
         $consulta = $connection->query("select DISTINCT cargo from tbl_empregos");
@@ -22,7 +22,7 @@
         }
         ?>
       </select>
-      <select name="area">
+      <select name="sltarea">
         <option selected disabled value= "" >Selecione</option>
         <?php
         $consulta = $connection->query("select DISTINCT area from tbl_empregos");
@@ -33,12 +33,11 @@
         ?>
       </select>
       <p>
-      <button type="submit">Enviar</button>
+      <button type="submit">Buscar</button>
     </form>
   </nav>
   
     <?php
-
     function toTd($txt)
     {
       return "<td>" . $txt . "</td>";
@@ -48,15 +47,15 @@
     {
       include "conexao.php";
 
-      $cargo = $_GET['cargo'] ?? "";
-      $area = $_GET['area'] ?? "";
+      $cargo = $_GET['sltcargo'] ?? "";
+      $area = $_GET['sltarea'] ?? "";
       if (empty($cargo)) {
         return;
       }
 
       $consulta = $connection->query("call sp_searchByCargoArea('$cargo', '$area')");
 
-      if(isset($_GET['cargo'])&& isset($_GET['area'])){
+      if(isset($_GET['sltcargo'])&& isset($_GET['sltarea'])){
         echo '<table <tr>
         <th>Registro</th>
         <th>Nome</th>
@@ -76,24 +75,18 @@
           echo toTd($exibe['salario']);
           echo toTd($exibe['eStatus']);
           echo toTd('<div class = "imagem">
-          <a href="alterar.php"><img src="img/alterar.png">
+          <a href="alterar.php?cd_alt=$exibe[Registro]"><img src="img/alterar.png">
           </div>');
           echo toTd('
          <div class = "imagem">
-         <a href="excluir.php"> <img src="img/excluir.png">
+         <a href="excluir.php?cd_excluir=$exibe[Registro]"> <img src="img/excluir.png">
           </div>');
          
           echo "</tr>";
         }
       }
       }
-    
-    
-  
 
-
-
-  
   
     reloadInfos();
 
